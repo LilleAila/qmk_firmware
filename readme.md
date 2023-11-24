@@ -11,18 +11,18 @@ cd qmk_firmware
 git remote add upstream https://github.com/qmk/qmk_firmware.git
 ```
 
+Make changes and commit
+```bash
+git add *
+git commit -am "commit message"
+git push origin master
+```
+
 Merge updates from `qmk/qmk_firmware`
 ```bash
 git fetch upstream
 git checkout master
 git merge upstream/master
-git push origin master
-```
-
-Make changes and commit
-```bash
-git add *
-git commit -am "commit message"
 git push origin master
 ```
 
