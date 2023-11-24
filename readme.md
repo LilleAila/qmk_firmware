@@ -1,5 +1,32 @@
 # Quantum Mechanical Keyboard Firmware
+QMK fork with my personal keymaps
 
+## Keeping a fork updated
+Initializing the fork
+
+```bash
+# Make a fork on github.com
+git clone https://github.com/your-username/qmk_firmware.git
+cd qmk_firmware
+git remote add upstream https://github.com/qmk/qmk_firmware.git
+```
+
+Merge updates from `qmk/qmk_firmware`
+```bash
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push origin master
+```
+
+Make changes and commit
+```bash
+git add *
+git commit -am "commit message"
+git push origin master
+```
+
+# Original readme
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
 [![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/Uq7gcHh)
 [![Docs Status](https://img.shields.io/badge/docs-ready-orange.svg)](https://docs.qmk.fm)
