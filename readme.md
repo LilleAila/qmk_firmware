@@ -1,6 +1,14 @@
 # Quantum Mechanical Keyboard Firmware
 QMK fork with my personal keymaps
 
+My keyboard: `keyboards/beekeeb/piantor_pro`
+Compile firmware:
+```bash
+qmk compile -kb beekeeb/piantor_pro -km default
+# Or to automatically flash:
+qmk flash -kb beekeeb/piantor_pro -km default
+```
+
 ## Keeping a fork updated
 Initializing the fork
 

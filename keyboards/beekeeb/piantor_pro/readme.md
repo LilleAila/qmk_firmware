@@ -1,5 +1,12 @@
 # Piantor Pro
 
+My keymap for `beekeeb/piantor_pro`: `olai`. Compile with:
+```bash
+qmk compile -kb beekeeb/piantor_pro -km olai
+qmk flash -kb beekeeb/piantor_pro -km olai
+```
+
+## Original readme
 ![Piantor Pro](https://i.imgur.com/UPRI64ch.jpg)
 
 A 42 key hotswappable keyboard with RP2040.
