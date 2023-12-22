@@ -3,6 +3,7 @@
 My keymap for `beekeeb/piantor_pro`: `olai`. Compile with:
 ```bash
 qmk compile -kb beekeeb/piantor_pro -km olai
+# Or flash directly with:
 qmk flash -kb beekeeb/piantor_pro -km olai
 ```
 
