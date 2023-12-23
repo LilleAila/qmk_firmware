@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             NO_APRX, KC_0,    KC_4, KC_5, KC_6, NO_EQL,  /**/ _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, _______,
             NO_NEQ,  NO_SLSH, KC_1, KC_2, KC_3, NO_MINS, /**/ _______, _______, KC_PGDN, _______, _______,  _______,
             //
-            _______, MO(3), _______, /**/ _______, _______, _______
+            _______, MO(5), _______, /**/ _______, _______, _______
             ),
 
     [4] = LAYOUT_split_3x6_3( // Sym
