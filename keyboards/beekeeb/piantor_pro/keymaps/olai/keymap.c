@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             XXXXXXX, CTL_T(KC_A), OPT_T(KC_R), CMD_T(KC_S), SFT_T(KC_T), KC_G, /**/ KC_M, SFT_T(KC_N), CMD_T(KC_E), OPT_T(KC_I), CTL_T(KC_O), NO_ARNG,
             KC_LSFT, KC_Z,        KC_X,        KC_C,        KC_D,        KC_V, /**/ KC_K, KC_H,        KC_COMM,     KC_DOT,      NO_MINS,    XXXXXXX,
             //
-            KC_TAB, LT(4, KC_ENT), KC_DEL, /**/ KC_BSPC, LT(3, KC_SPC), KC_ESC
+            KC_DEL, LT(4, KC_TAB), KC_ENT, /**/ KC_SPC, LT(3, KC_ESC), KC_BSPC
             ),
 
 
@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TAB,  XXXXXXX, KC_A,    KC_S,    KC_D,    XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
             KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
             //
-            KC_LCTL, LT(4, KC_ENT), KC_DEL, /**/ KC_BSPC, LT(3, KC_SPC), KC_ESC
+            KC_LCTL, LT(4, KC_DEL), KC_ENT, /**/ KC_SPC, LT(3, KC_BSPC), KC_ESC
             ),
 
     [2] = LAYOUT_split_3x6_3( // Plover
