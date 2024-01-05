@@ -19,21 +19,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // No action:   XXXXXXX (7) or KC_NO
     // Transparent: _______ (7) or KC_TRNS
     // Using mods CTRL, OPTION, CMD, SHIFT
-    [0] = LAYOUT_split_3x6_3(
+    [0] = LAYOUT_split_3x6_3( // Colemak-dh
             KC_DEL,  KC_Q,        KC_W,        KC_F,        KC_P,        KC_B, /**/ KC_J, KC_L,        KC_U,        KC_Y,        NO_OSTR,     NO_AE,
-            XXXXXXX, CTL_T(KC_A), OPT_T(KC_R), CMD_T(KC_S), SFT_T(KC_T), KC_G, /**/ KC_M, SFT_T(KC_N), CMD_T(KC_E), OPT_T(KC_I), CTL_T(KC_O), NO_ARNG,
+            KC_TAB,  CTL_T(KC_A), OPT_T(KC_R), CMD_T(KC_S), SFT_T(KC_T), KC_G, /**/ KC_M, SFT_T(KC_N), CMD_T(KC_E), OPT_T(KC_I), CTL_T(KC_O), NO_ARNG,
             KC_LSFT, KC_Z,        KC_X,        KC_C,        KC_D,        KC_V, /**/ KC_K, KC_H,        KC_COMM,     KC_DOT,      NO_MINS,     XXXXXXX,
             //
-            KC_TAB, KC_BSPC, LT(4, KC_SPC), /**/ LT(3, KC_SPC), LT(5, KC_ENT), KC_ESC
+            KC_TAB, KC_ENT, LT(4, KC_SPC), /**/ LT(3, KC_SPC), LT(5, KC_BSPC), KC_ESC
             ),
 
 
-    [1] = LAYOUT_split_3x6_3( // Gaming (almost qwerty)
-            KC_ESC,  XXXXXXX, KC_Q,    KC_W,    KC_E,    XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-            KC_TAB,  XXXXXXX, KC_A,    KC_S,    KC_D,    XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-            KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    [1] = LAYOUT_split_3x6_3( // QWERTY (gaming) -- Mods on bottom row because w a s and d will be held down (could be done with tap dance??)
+            KC_DEL,  KC_Q,        KC_W,        KC_E,        KC_R,        KC_T, /**/ KC_Y, KC_U,        KC_I,        KC_O,        KC_P,           NO_ARNG,
+            KC_TAB,  KC_A,        KC_S,        KC_D,        KC_F,        KC_G, /**/ KC_H, SFT_T(KC_J), CMD_T(KC_K), OPT_T(KC_L), CTL_T(NO_OSTR), NO_AE,
+            KC_LSFT, CTL_T(KC_Z), OPT_T(KC_X), CMD_T(KC_C), SFT_T(KC_V), KC_B, /**/ KC_N, KC_M,        KC_COMM,     KC_DOT,      NO_MINS,        XXXXXXX,
             //
-            KC_TAB, KC_DEL, LT(4, KC_BSPC), /**/ LT(3, KC_SPC), LT(5, KC_ENT), KC_ESC
+            KC_TAB, KC_DEL, LT(4, KC_ENT), /**/ LT(3, KC_SPC), LT(5, KC_BSPC), KC_ESC
             ),
 
     [2] = LAYOUT_split_3x6_3( // Plover
