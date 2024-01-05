@@ -29,11 +29,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [1] = LAYOUT_split_3x6_3( // QWERTY (gaming) -- Mods on bottom row because w a s and d will be held down (could be done with tap dance??)
-            KC_DEL,  KC_Q,        KC_W,        KC_E,        KC_R,        KC_T, /**/ KC_Y, KC_U,        KC_I,        KC_O,        KC_P,           NO_ARNG,
-            KC_TAB,  KC_A,        KC_S,        KC_D,        KC_F,        KC_G, /**/ KC_H, SFT_T(KC_J), CMD_T(KC_K), OPT_T(KC_L), CTL_T(NO_OSTR), NO_AE,
-            KC_LSFT, CTL_T(KC_Z), OPT_T(KC_X), CMD_T(KC_C), SFT_T(KC_V), KC_B, /**/ KC_N, KC_M,        KC_COMM,     KC_DOT,      NO_MINS,        XXXXXXX,
+            KC_LSFT,  KC_Q,        KC_W,        KC_E,        KC_R,        KC_T, /**/ KC_Y, KC_U,        KC_I,        KC_O,        KC_P,           NO_ARNG,
+            KC_LCTL,  KC_A,        KC_S,        KC_D,        KC_F,        KC_G, /**/ KC_H, SFT_T(KC_J), CMD_T(KC_K), OPT_T(KC_L), CTL_T(NO_OSTR), NO_AE,
+            KC_LCMD, KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M,        KC_COMM,     KC_DOT,      NO_MINS,        XXXXXXX,
             //
-            KC_TAB, KC_ENT, LT(4, KC_SPC), /**/ LT(3, KC_SPC), LT(5, KC_BSPC), KC_ESC
+            KC_TAB, KC_LOPT, LT(4, KC_SPC), /**/ LT(3, KC_ENT), LT(5, KC_BSPC), KC_ESC
             ),
 
     [2] = LAYOUT_split_3x6_3( // Plover
