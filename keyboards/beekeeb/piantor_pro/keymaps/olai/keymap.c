@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_LCTL,  KC_A,        KC_S,        KC_D,        KC_F,        KC_G, /**/ KC_H, SFT_T(KC_J), CMD_T(KC_K), OPT_T(KC_L), CTL_T(NO_OSTR), NO_AE,
             KC_LCMD, KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M,        KC_COMM,     KC_DOT,      NO_MINS,        XXXXXXX,
             //
-            KC_TAB, KC_LOPT, LT(4, KC_SPC), /**/ LT(3, KC_ENT), LT(5, KC_BSPC), KC_ESC
+            KC_LOPT, KC_SPC, LT(4, KC_TAB), /**/ LT(3, KC_ENT), LT(5, KC_BSPC), KC_ESC
             ),
 
     [2] = LAYOUT_split_3x6_3( // Plover
