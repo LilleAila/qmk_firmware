@@ -9,10 +9,6 @@
 #include "keymap_mac_norwegian.h"   // Prefix: NM_
 #include "keymap_linux_norwegian.h" // Prefux: NL_
 
-#ifdef OS_DETECTION_ENABLE
-  #include "os_detection.h"
-#endif
-
 enum layers {
     _MAIN_MAC, // Colamek-dh
     _MAIN_LINUX,
@@ -27,7 +23,7 @@ enum layers {
 };
 
 #if defined(OS_DETECTION_ENABLE) && defined(DEFERRED_EXEC_ENABLE)
-// idk what this does but it works ig
+#include "os_detection.h"
 os_variant_t os_type;
 
 uint32_t detect_os(uint32_t trigger_time, void *cb_arg) {
@@ -35,9 +31,6 @@ uint32_t detect_os(uint32_t trigger_time, void *cb_arg) {
         os_type = detected_host_os();
         if (os_type) {
             switch (os_type) {
-                // case OS_UNSURE:
-                //     xprintf("unknown OS Detected\n");
-                //     break;
                 case OS_MACOS:
                     layer_move(_MAIN_MAC);
                     break;
@@ -47,6 +40,10 @@ uint32_t detect_os(uint32_t trigger_time, void *cb_arg) {
                 case OS_LINUX:
                     layer_move(_MAIN_LINUX);
                     break;
+                // case OS_UNSURE:
+                //     break;
+                // case OS_WINDOWS:
+                //     break;
                 default:
                     layer_move(_MAIN_LINUX);
                     break;
@@ -123,16 +120,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     //********************//
     [_SYM_MAC] = LAYOUT_split_3x6_3( // Sym
-            NO_PM,   NM_PERC, NM_GRV,  NO_TILD, NM_LEQ,  NM_GEQ,  /**/ NO_LPRN, NO_RPRN, NO_EXLM, NO_COLN, NM_DLR,  NM_NEQ,
-            NM_OMEG, NM_AMPR, NM_ACUT, NM_BTCK, NO_LABK, NO_RABK, /**/ NO_LBRC, NO_RBRC, NO_DQUO, NM_QUOT, NO_SLSH, NM_APRX,
+            NO_PM,   NM_PERC, NM_GRV,  NO_TILD, NM_LEQ,  NM_GEQ,  /**/ NO_LBRC, NO_RBRC, NO_EXLM, NO_COLN, NM_DLR,  NM_NEQ,
+            NM_OMEG, NM_AMPR, NM_ACUT, NM_BTCK, NO_LABK, NO_RABK, /**/ NO_LPRN, NO_RPRN, NO_DQUO, NM_QUOT, NO_SLSH, NM_APRX,
             NO_CIRC, NM_SQRT, NM_AT,   NO_UNDS, NM_PIPE, NO_HASH, /**/ NM_LCBR, NM_RCBR, NO_QUES, NO_SCLN, NM_BSLS, _______,
             //
             _______, _______, _______, /**/ MO(_FUNC), _______, _______
             ),
 
     [_SYM_LINUX] = LAYOUT_split_3x6_3( // Sym
-            NO_PM,   NL_PERC, NL_GRV,  NO_TILD, _______, _______, /**/ NO_LPRN, NO_RPRN, NO_EXLM, NO_COLN, NL_DLR,  _______,
-            NL_OMEG, NL_AMPR, NL_ACUT, NL_BTCK, NO_LABK, NO_RABK, /**/ NO_LBRC, NO_RBRC, NO_DQUO, NL_QUOT, NO_SLSH, _______,
+            NO_PM,   NL_PERC, NL_GRV,  NO_TILD, _______, _______, /**/ NO_LBRC, NO_RBRC, NO_EXLM, NO_COLN, NL_DLR,  _______,
+            NL_OMEG, NL_AMPR, NL_ACUT, NL_BTCK, NO_LABK, NO_RABK, /**/ NO_LPRN, NO_RPRN, NO_DQUO, NL_QUOT, NO_SLSH, _______,
             NO_CIRC, _______, NL_AT,   NO_UNDS, NL_PIPE, NO_HASH, /**/ NL_LCBR, NL_RCBR, NO_QUES, NO_SCLN, NL_BSLS, _______,
             //
             _______, _______, _______, /**/ MO(_FUNC), _______, _______
