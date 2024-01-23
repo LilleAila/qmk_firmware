@@ -5,8 +5,13 @@
 // #include "keymap_norwegian.h"
 // TODO: move aliases for both into a separate file
 #include "keymap_norwegian.h"       // Prefix: NO_
+// Some parts of these files depend on code from "keymap_norwegian.h"
 #include "keymap_mac_norwegian.h"   // Prefix: NM_
 #include "keymap_linux_norwegian.h" // Prefux: NL_
+
+#ifdef OS_DETECTION_ENABLE
+  #include "os_detection.h"
+#endif
 
 enum layers {
     _MAIN_MAC, // Colamek-dh
@@ -21,11 +26,46 @@ enum layers {
     _FUNC,
 };
 
+#if defined(OS_DETECTION_ENABLE) && defined(DEFERRED_EXEC_ENABLE)
+// idk what this does but it works ig
+os_variant_t os_type;
+
+uint32_t detect_os(uint32_t trigger_time, void *cb_arg) {
+    if (is_keyboard_master()) {
+        os_type = detected_host_os();
+        if (os_type) {
+            switch (os_type) {
+                // case OS_UNSURE:
+                //     xprintf("unknown OS Detected\n");
+                //     break;
+                case OS_MACOS:
+                    layer_move(_MAIN_MAC);
+                    break;
+                case OS_IOS:
+                    layer_move(_MAIN_MAC);
+                    break;
+                case OS_LINUX:
+                    layer_move(_MAIN_LINUX);
+                    break;
+                default:
+                    layer_move(_MAIN_LINUX);
+                    break;
+            }
+        }
+    }
+
+    return os_type ? 0 : 500;
+}
+
+void keyboard_post_init_user(void) {
+    defer_exec(100, detect_os, NULL);
+}
+#endif
+
 // Docs
 // https://github.com/qmk/qmk_firmware/blob/master/docs/keycodes_basic.md
 // https://github.com/qmk/qmk_firmware/blob/master/docs/feature_advanced_keycodes.md
 // https://github.com/qmk/qmk_firmware/blob/master/docs/feature_layers.md
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Most often, only master half needs lto be flashed after first flash
     // mini.align: select lines and run gA,<ret>

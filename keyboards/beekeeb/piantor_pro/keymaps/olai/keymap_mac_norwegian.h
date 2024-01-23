@@ -39,5 +39,5 @@
 
 #define NM_LCBR ALGR(S(KC_8))            // {
 #define NM_RCBR ALGR(S(KC_9))            // }
-#define NM_LEQ  ALGR(KC_LABK)            // ≤
-#define NM_GEQ  ALGR(KC_RABK)            // ≥
+#define NM_LEQ  ALGR(NO_LABK)            // ≤
+#define NM_GEQ  ALGR(NO_RABK)            // ≥
