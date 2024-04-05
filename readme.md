@@ -34,6 +34,16 @@ git merge upstream/master
 git push origin master
 ```
 
+## When cloning the repo
+```bash
+git clone git@github.com:LilleAila/qmk_firmware ~/qmk_firmware
+cd ~/qmk_firmware
+git submodule init
+# Remember to enable `hardware.keyboard.qmk.enable` in NixOS!!
+nix-shell
+qmk setup
+```
+
 # Original readme
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
 [![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/Uq7gcHh)
