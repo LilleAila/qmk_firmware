@@ -3,61 +3,20 @@
 
 #include QMK_KEYBOARD_H
 // #include "keymap_norwegian.h"
-// TODO: move aliases for both into a separate file
-#include "keymap_norwegian.h"       // Prefix: NO_
+#include "keymap_norwegian.h" // Prefix: NO_
 // Some parts of these files depend on code from "keymap_norwegian.h"
-#include "keymap_mac_norwegian.h"   // Prefix: NM_
-#include "keymap_linux_norwegian.h" // Prefux: NL_
 
 enum layers {
-    _MAIN_MAC, // Colamek-dh
-    _MAIN_LINUX,
+    _MAIN,
     _GAME, // QWERTY
     _NUM_NAV,
-    _SYM_MAC,
-    _SYM_LINUX,
-    _STENO_MAC,
+    _SYM,
+    _STENO,
     _MOUSE,
     _FN,
     _FUNC,
 };
 
-#if defined(OS_DETECTION_ENABLE) && defined(DEFERRED_EXEC_ENABLE)
-#include "os_detection.h"
-os_variant_t os_type;
-
-uint32_t detect_os(uint32_t trigger_time, void *cb_arg) {
-    if (is_keyboard_master()) {
-        os_type = detected_host_os();
-        if (os_type) {
-            switch (os_type) {
-                case OS_MACOS:
-                    layer_move(_MAIN_MAC);
-                    break;
-                case OS_IOS:
-                    layer_move(_MAIN_MAC);
-                    break;
-                case OS_LINUX:
-                    layer_move(_MAIN_LINUX);
-                    break;
-                // case OS_UNSURE:
-                //     break;
-                // case OS_WINDOWS:
-                //     break;
-                default:
-                    layer_move(_MAIN_LINUX);
-                    break;
-            }
-        }
-    }
-
-    return os_type ? 0 : 500;
-}
-
-void keyboard_post_init_user(void) {
-    defer_exec(100, detect_os, NULL);
-}
-#endif
 
 // Docs
 // https://github.com/qmk/qmk_firmware/blob/master/docs/keycodes_basic.md
@@ -74,20 +33,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // CMD = GUI
 
     //********************//
-    [_MAIN_MAC] = LAYOUT_split_3x6_3( // Colemak-dh
-            KC_DEL,  KC_Q,        KC_W,        KC_F,        KC_P,        KC_B, /**/ KC_J, KC_L,        KC_U,        KC_Y,        NO_OSTR,     NO_AE,
-            KC_TAB,  CTL_T(KC_A), OPT_T(KC_R), GUI_T(KC_S), SFT_T(KC_T), KC_G, /**/ KC_M, SFT_T(KC_N), GUI_T(KC_E), OPT_T(KC_I), CTL_T(KC_O), NO_ARNG,
-            KC_LSFT, KC_Z,        KC_X,        KC_C,        KC_D,        KC_V, /**/ KC_K, KC_H,        KC_COMM,     KC_DOT,      NO_MINS,     XXXXXXX,
-            //
-            KC_TAB, LT(_FN, KC_ENT), LT(_SYM_MAC, KC_SPC), /**/ LT(_NUM_NAV, KC_SPC), LT(_MOUSE, KC_BSPC), KC_ESC
-            ),
-
-    [_MAIN_LINUX] = LAYOUT_split_3x6_3(
+    [_MAIN] = LAYOUT_split_3x6_3(
             KC_DEL,  KC_Q,        KC_W,        KC_F,        KC_P,        KC_B, /**/ KC_J, KC_L,        KC_U,        KC_Y,        NO_OSTR,     NO_AE,
             KC_TAB,  GUI_T(KC_A), OPT_T(KC_R), CTL_T(KC_S), SFT_T(KC_T), KC_G, /**/ KC_M, SFT_T(KC_N), CTL_T(KC_E), OPT_T(KC_I), GUI_T(KC_O), NO_ARNG,
             KC_LSFT, KC_Z,        KC_X,        KC_C,        KC_D,        KC_V, /**/ KC_K, KC_H,        KC_COMM,     KC_DOT,      NO_MINS,     XXXXXXX,
             //
-            KC_TAB, LT(_FN, KC_ENT), LT(_SYM_LINUX, KC_SPC), /**/ LT(_NUM_NAV, KC_SPC), LT(_MOUSE, KC_BSPC), KC_ESC
+            KC_TAB, LT(_FN, KC_ENT), LT(_SYM, KC_SPC), /**/ LT(_NUM_NAV, KC_SPC), LT(_MOUSE, KC_BSPC), KC_ESC
             ),
 
 
@@ -97,11 +48,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_LSFT,  KC_A,        KC_S,        KC_D,        KC_F,        KC_G, /**/ KC_H, SFT_T(KC_J), CMD_T(KC_K), OPT_T(KC_L), CTL_T(NO_OSTR), NO_AE,
             KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M,        KC_COMM,     KC_DOT,      NO_MINS,        XXXXXXX,
             //
-            KC_LOPT, KC_SPC, LT(_SYM_MAC, KC_TAB), /**/ LT(_NUM_NAV, KC_ENT), LT(_MOUSE, KC_BSPC), KC_ESC
+            KC_LOPT, KC_SPC, LT(_SYM, KC_TAB), /**/ LT(_NUM_NAV, KC_ENT), LT(_MOUSE, KC_BSPC), KC_ESC
             ),
 
     //********************//
-    [_STENO_MAC] = LAYOUT_split_3x6_3( // Plover
+    [_STENO] = LAYOUT_split_3x6_3( // Plover
             XXXXXXX, STN_N1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, /**/ STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
             XXXXXXX, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, /**/ STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
             MO(_MOUSE),   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, STN_N1,  /**/ STN_N1,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MO(_FUNC),
@@ -119,18 +70,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     //********************//
-    [_SYM_MAC] = LAYOUT_split_3x6_3( // Sym
-            NO_PM,   NM_PERC, NM_GRV,  NO_TILD, NM_LEQ,  NM_GEQ,  /**/ NO_LBRC, NO_RBRC, NO_EXLM, NO_COLN, NM_DLR,  NM_NEQ,
-            NM_OMEG, NM_AMPR, NM_ACUT, NM_BTCK, NO_LABK, NO_RABK, /**/ NO_LPRN, NO_RPRN, NO_DQUO, NM_QUOT, NO_SLSH, NM_APRX,
-            NO_CIRC, NM_SQRT, NM_AT,   NO_UNDS, NM_PIPE, NO_HASH, /**/ NM_LCBR, NM_RCBR, NO_QUES, NO_SCLN, NM_BSLS, _______,
-            //
-            _______, _______, _______, /**/ MO(_FUNC), _______, _______
-            ),
-
-    [_SYM_LINUX] = LAYOUT_split_3x6_3( // Sym
-            NO_PM,   NL_PERC, NL_GRV,  NO_TILD, _______, _______, /**/ NO_LBRC, NO_RBRC, NO_EXLM, NO_COLN, NL_DLR,  _______,
-            NL_OMEG, NL_AMPR, NL_ACUT, NL_BTCK, NO_LABK, NO_RABK, /**/ NO_LPRN, NO_RPRN, NO_DQUO, NL_QUOT, NO_SLSH, _______,
-            NO_CIRC, _______, NL_AT,   NO_UNDS, NL_PIPE, NO_HASH, /**/ NL_LCBR, NL_RCBR, NO_QUES, NO_SCLN, NL_BSLS, _______,
+    [_SYM] = LAYOUT_split_3x6_3( // Sym
+            NO_PM,   NO_PERC, NO_GRV,  NO_TILD, XXXXXXX, XXXXXXX, /**/ NO_LBRC, NO_RBRC, NO_EXLM, NO_COLN, NO_DLR,  _______,
+            NO_OMEG, NO_AMPR, NO_ACUT, NO_BTCK, NO_LABK, NO_RABK, /**/ NO_LPRN, NO_RPRN, NO_DQUO, NO_QUOT, NO_SLSH, _______,
+            NO_CIRC, XXXXXXX, NO_AT,   NO_UNDS, NO_PIPE, NO_HASH, /**/ NO_LCBR, NO_RCBR, NO_QUES, NO_SCLN, NO_BSLS, _______,
             //
             _______, _______, _______, /**/ MO(_FUNC), _______, _______
             ),
@@ -146,18 +89,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     //********************//
     [_FN] = LAYOUT_split_3x6_3(
-            _______, _______, _______, _______,  _______, _______, /**/ KC_MPRV, KC_MNXT, KC_VOLU, KC_BRIU, _______, KC_SLEP,
-            KC_F1,   KC_F2,   KC_F3,    KC_F4,    KC_F5,   KC_F6,   /**/ KC_MSTP, KC_MPLY, KC_VOLD, KC_BRID, _______, _______,
-            KC_F7,   KC_F8,   KC_F9,    KC_F10,   KC_F11,  KC_F12,  /**/ _______, _______, KC_MUTE, _______, _______, _______,
+            _______, _______, _______, _______, _______, _______, /**/ KC_MPRV, KC_MNXT, KC_VOLU, KC_BRIU, _______, KC_SLEP,
+            KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   /**/ KC_MSTP, KC_MPLY, KC_VOLD, KC_BRID, _______, _______,
+            KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  /**/ _______, _______, KC_MUTE, _______, _______, _______,
             //
             _______, _______, _______,  /**/ _______, _______, _______
             ),
 
     //********************//
     [_FUNC] = LAYOUT_split_3x6_3( // Function
-            QK_BOOT, DF(_MAIN_MAC), DF(_MAIN_LINUX), DF(_GAME), DF(_STENO_MAC), _______, /**/ _______, _______, _______, _______, _______, _______,
-            _______, _______,       _______,   _______,        _______, _______, /**/ _______, _______, _______, _______, _______, _______,
-            _______, _______,       _______,   _______,        _______, _______, /**/ _______, _______, _______, _______, _______, _______,
+            QK_BOOT, _______, DF(_MAIN), DF(_GAME), DF(_STENO), _______, /**/ _______, _______, _______, _______, _______, _______,
+            _______, _______, _______,         _______,   _______,    _______, /**/ _______, _______, _______, _______, _______, _______,
+            _______, _______, _______,         _______,   _______,    _______, /**/ _______, _______, _______, _______, _______, _______,
             //
             _______, _______, _______, /**/ _______, _______, _______
             )
