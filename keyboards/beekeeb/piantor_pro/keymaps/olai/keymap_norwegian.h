@@ -37,10 +37,17 @@
 #define NO_RPRN S(KC_9)                        // )
 #define NO_LBRC ALGR(KC_8)                     // [
 #define NO_RBRC ALGR(KC_9)                     // ]
-#define NO_LABK KC_GRV                         // <
+#define NO_LCBR ALGR(KC_7)                     // {
+#define NO_RCBR ALGR(KC_0)                     // }
+#define NO_LABK KC_NUBS                        // <
 #define NO_RABK S(NO_LABK)                     // >
 
-#define NO_PIPE KC_NUBS                        // |
+#define NO_LARR ALGR(NO_Y)                     // ←
+#define NO_DARR ALGR(NO_U)                     // ↓
+#define NO_UARR S(ALGR(NO_U))                  // ↑
+#define NO_RARR ALGR(NO_I)                     // →
+
+#define NO_PIPE KC_GRV                         // |
 #define NO_AT   ALGR(KC_2)                     // @
 #define NO_BSLS KC_EQL                         // (backslash)
 #define NO_QUOT KC_NUHS                        // '
@@ -51,16 +58,12 @@
 #define NO_PND  ALGR(KC_3)                     // £
 #define NO_PERC S(KC_5)                        // %
 #define NO_AMPR S(KC_6)                        // &
-#define NO_ACUT ALGR(KC_EQL)                   // ´ (dead)
-#define NO_BTCK S(NO_ACUT)                     // `
-#define NO_GRV  S(NO_ACUT)                     // ` (dead)
+#define NO_ACUT ALGR(NO_BSLS)                  // ´ (dead)
+#define NO_BTCK S(NO_BSLS)                     // ` (dead)
+#define NO_GRV  S(NO_BSLS)                     // ` (dead)
 
 #define NO_OMEG ALGR(S(KC_Q))                  // Ω
 #define NO_BETA ALGR(KC_S)                     // ß
 #define NO_DEGS ALGR(S(KC_0))                  // °
 #define NO_MICR ALGR(KC_M)                     // µ
 
-#define NO_LCBR ALGR(KC_7)                     // {
-#define NO_RCBR ALGR(KC_0)                     // }
-#define NO_LEQ  ALGR(NO_LABK)                  // ≤
-#define NO_GEQ  ALGR(NO_RABK)                  // ≥
