@@ -8,6 +8,32 @@
 // clang-format off
 
 // Aliases
+#define NO_A    KC_A                           // a
+#define NO_B    KC_B                           // b
+#define NO_C    KC_C                           // c
+#define NO_D    KC_D                           // d
+#define NO_E    KC_E                           // e
+#define NO_F    KC_F                           // f
+#define NO_G    KC_G                           // g
+#define NO_H    KC_H                           // h
+#define NO_I    KC_I                           // i
+#define NO_J    KC_J                           // j
+#define NO_K    KC_K                           // k
+#define NO_L    KC_L                           // l
+#define NO_M    KC_M                           // m
+#define NO_N    KC_N                           // n
+#define NO_O    KC_O                           // o
+#define NO_P    KC_P                           // p
+#define NO_Q    KC_Q                           // q
+#define NO_R    KC_R                           // r
+#define NO_S    KC_S                           // s
+#define NO_T    KC_T                           // t
+#define NO_U    KC_U                           // u
+#define NO_V    KC_V                           // v
+#define NO_W    KC_W                           // w
+#define NO_X    KC_X                           // x
+#define NO_Y    KC_Y                           // y
+#define NO_Z    KC_Z                           // z
 #define NO_AE   KC_QUOT                        // Æ
 #define NO_OSTR KC_SCLN                        // Ø
 #define NO_ARNG KC_LBRC                        // Å
@@ -42,10 +68,10 @@
 #define NO_LABK KC_NUBS                        // <
 #define NO_RABK S(NO_LABK)                     // >
 
-#define NO_LARR ALGR(NO_Y)                     // ←
-#define NO_DARR ALGR(NO_U)                     // ↓
-#define NO_UARR S(ALGR(NO_U))                  // ↑
-#define NO_RARR ALGR(NO_I)                     // →
+#define NO_LARR ALGR(KC_Y)                     // ←
+#define NO_DARR ALGR(KC_U)                     // ↓
+#define NO_UARR S(ALGR(KC_U))                  // ↑
+#define NO_RARR ALGR(KC_I)                     // →
 
 #define NO_PIPE KC_GRV                         // |
 #define NO_AT   ALGR(KC_2)                     // @
