@@ -17,6 +17,23 @@ enum layers {
     _FUNC,
 };
 
+enum macros {
+    SCRREC = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case SCRREC:
+        // Looking glass: exit capture, start recording, re-enter capture
+        if (record->event.pressed) {
+            tap_code(KC_SCRL); // scroll lock
+            tap_code16(A(G(KC_R))); // alt + gui + r
+            tap_code(KC_SCRL);
+        }
+        return false;
+    }
+    return true;
+};
 
 // Docs
 // https://github.com/qmk/qmk_firmware/blob/master/docs/keycodes_basic.md
@@ -34,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Using left-alt on right side because right-alt is actually alt gr and not recognized in sway keybindings as alt
 
     //********************//
-    [_MAIN] = LAYOUT_split_3x6_3(
+    [_MAIN] = LAYOUT_split_3x6_3( // COLEMAK-DH (main)
             KC_DEL,  KC_Q,        KC_W,        KC_F,        KC_P,        KC_B, /**/ KC_J, KC_L,        KC_U,        KC_Y,        NO_OSTR,     NO_AE,
             KC_TAB,  GUI_T(KC_A), ALT_T(KC_R), CTL_T(KC_S), SFT_T(KC_T), KC_G, /**/ KC_M, RSFT_T(KC_N), RCTL_T(KC_E), ALT_T(KC_I), RGUI_T(KC_O), NO_ARNG,
             KC_LSFT, KC_Z,        KC_X,        KC_C,        KC_D,        KC_V, /**/ KC_K, KC_H,        KC_COMM,     KC_DOT,      NO_MINS,     XXXXXXX,
@@ -44,10 +61,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     //********************//
-    [_GAME] = LAYOUT_split_3x6_3( // QWERTY (gaming) -- Mods on bottom row because w a s and d will be held down (could be done with tap dance??)
-            KC_LCMD, KC_Q, KC_W, KC_E, KC_R, KC_T, /**/ KC_Y, KC_U,         KC_I,         KC_O,         KC_P,            NO_ARNG,
+    [_GAME] = LAYOUT_split_3x6_3( // QWERTY (gaming)
+            KC_LCMD, KC_Q, KC_W, KC_E, KC_R, KC_T, /**/ KC_Y, KC_U,         KC_I,         KC_O,        KC_P,            NO_ARNG,
             KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G, /**/ KC_H, RSFT_T(KC_J), RCTL_T(KC_K), ALT_T(KC_L), RGUI_T(NO_OSTR), NO_AE,
-            KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M,         KC_COMM,      KC_DOT,       NO_MINS,         XXXXXXX,
+            KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M,         KC_COMM,      KC_DOT,      NO_MINS,         SCRREC,
             //
             KC_LOPT, KC_SPC, LT(_SYM, KC_TAB), /**/ LT(_NUM_NAV, KC_ENT), LT(_MOUSE, KC_BSPC), KC_ESC
             ),
