@@ -1,0 +1,5 @@
+COMBO_ENABLE = yes
+COMBO_SHOULD_TRIGGER = yes
+
+# STENO_ENABLE = yes
+# STENO_PROTOCOL = geminipr
