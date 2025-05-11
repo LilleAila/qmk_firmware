@@ -31,9 +31,20 @@ enum combos {
     Q_END,
     // Colemak combos
     C_START,
+    C_A,
+    C_R,
+    C_S,
+    C_T,
+    C_G,
+    C_M,
+    C_N,
+    C_E,
+    C_I,
+    C_O,
     C_END,
 };
 
+// qwerty
 const uint16_t PROGMEM qwerty_A[] = {KC_Q, KC_Z, COMBO_END};
 const uint16_t PROGMEM qwerty_S[] = {KC_W, KC_X, COMBO_END};
 const uint16_t PROGMEM qwerty_D[] = {KC_E, KC_C, COMBO_END};
@@ -46,8 +57,20 @@ const uint16_t PROGMEM qwerty_L[] = {KC_O, KC_DOT, COMBO_END};
 const uint16_t PROGMEM qwerty_OE[] = {KC_P, NO_MINS, COMBO_END};
 const uint16_t PROGMEM qwerty_LSFT[] = {KC_R, KC_T, KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM qwerty_RSFT[] = {KC_Y, KC_U, KC_N, KC_M, COMBO_END};
+// colemak
+const uint16_t PROGMEM colemak_A[] = {KC_Q, KC_Z, COMBO_END};
+const uint16_t PROGMEM colemak_R[] = {KC_W, KC_X, COMBO_END};
+const uint16_t PROGMEM colemak_S[] = {KC_F, KC_C, COMBO_END};
+const uint16_t PROGMEM colemak_T[] = {KC_P, KC_D, COMBO_END};
+const uint16_t PROGMEM colemak_G[] = {KC_B, KC_V, COMBO_END};
+const uint16_t PROGMEM colemak_M[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM colemak_N[] = {KC_L, KC_H, COMBO_END};
+const uint16_t PROGMEM colemak_E[] = {KC_U, KC_COMM, COMBO_END};
+const uint16_t PROGMEM colemak_I[] = {KC_Y, KC_DOT, COMBO_END};
+const uint16_t PROGMEM colemak_O[] = {NO_OE, NO_MINS, COMBO_END};
 
 combo_t key_combos[] = {
+    // qwerty
     [Q_A] = COMBO(qwerty_A, KC_A),
     [Q_S] = COMBO(qwerty_S, KC_S),
     [Q_D] = COMBO(qwerty_D, KC_D),
@@ -60,11 +83,29 @@ combo_t key_combos[] = {
     [Q_OE] = COMBO(qwerty_OE, NO_OE),
     [Q_LSFT] = COMBO(qwerty_LSFT, KC_LSFT),
     [Q_RSFT] = COMBO(qwerty_RSFT, KC_RSFT),
+    // colemak
+    [C_A] = COMBO(colemak_A, KC_A),
+    [C_R] = COMBO(colemak_R, KC_R),
+    [C_S] = COMBO(colemak_S, KC_S),
+    [C_T] = COMBO(colemak_T, KC_T),
+    [C_G] = COMBO(colemak_G, KC_G),
+    [C_M] = COMBO(colemak_M, KC_M),
+    [C_N] = COMBO(colemak_N, KC_N),
+    [C_E] = COMBO(colemak_E, KC_E),
+    [C_I] = COMBO(colemak_I, KC_I),
+    [C_O] = COMBO(colemak_O, KC_O),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     if (combo_index > Q_START && combo_index < Q_END) {
         if (layer_state_is(_QWERTY)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    else if (combo_index > C_START && combo_index < C_END) {
+        if (layer_state_is(_COLEMAK)) {
             return true;
         } else {
             return false;
@@ -97,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_COLEMAK] = LAYOUT_2x12_4(
         TD(TD_LAYER_CYCLE), KC_Q, KC_W, KC_F, KC_P, KC_B, /**/ KC_J, KC_L, KC_U,    KC_Y,   NO_OE,   NO_AE,
-        QK_BOOT,            KC_Z, KC_X, KC_C, KC_D, KC_V, /**/ KC_K, KC_H, KC_COMM, KC_DOT, NO_MINS, XXXXXXX,
+        QK_BOOT,            KC_Z, KC_X, KC_C, KC_D, KC_V, /**/ KC_K, KC_H, KC_COMM, KC_DOT, NO_MINS, NO_AA,
         KC_ENT, KC_SPC, /**/ KC_SPC, KC_BSPC
     )
 };
