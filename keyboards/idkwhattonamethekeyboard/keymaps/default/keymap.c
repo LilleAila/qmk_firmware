@@ -97,19 +97,12 @@ combo_t key_combos[] = {
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    uint8_t current_layer = get_highest_layer(layer_state);
     if (combo_index > Q_START && combo_index < Q_END) {
-        if (layer_state_is(_QWERTY)) {
-            return true;
-        } else {
-            return false;
-        }
+        return current_layer == _QWERTY;
     }
     else if (combo_index > C_START && combo_index < C_END) {
-        if (layer_state_is(_COLEMAK)) {
-            return true;
-        } else {
-            return false;
-        }
+        return current_layer == _COLEMAK;
     }
 
     return true;
