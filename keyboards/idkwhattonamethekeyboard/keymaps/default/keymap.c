@@ -5,6 +5,7 @@
 #include "keymap_norwegian.h"
 
 enum layers {
+    _PLOVER,
     _QWERTY,
     _COLEMAK, // colemak dh
 };
@@ -111,9 +112,12 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 void layer_cycle(tap_dance_state_t *state, void *user_data) {
     switch (state->count) {
         case 1:
-            layer_move(_QWERTY);
+            layer_move(_PLOVER);
             break;
         case 2:
+            layer_move(_QWERTY);
+            break;
+        case 3:
             layer_move(_COLEMAK);
             break;
     }
@@ -124,6 +128,11 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_PLOVER] = LAYOUT_2x12_4(
+        TD(TD_LAYER_CYCLE), STN_N1, STN_TL, STN_PL, STN_HL, STN_ST1, /**/ STN_ST3, STN_FR, STN_PR, STN_LR, STN_TR, STN_DR,
+        QK_BOOT,            STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2, /**/ STN_ST4, STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR,
+        STN_A, STN_O, /**/ STN_E, STN_U
+    ),
     [_QWERTY] = LAYOUT_2x12_4(
         TD(TD_LAYER_CYCLE), KC_Q, KC_W, KC_E, KC_R, KC_T, /**/ KC_Y, KC_U, KC_I,    KC_O,   KC_P,    NO_AA,
         QK_BOOT,            KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M, KC_COMM, KC_DOT, NO_MINS, NO_AE,
