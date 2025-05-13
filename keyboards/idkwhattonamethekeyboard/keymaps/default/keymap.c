@@ -28,7 +28,13 @@ enum combos {
     Q_L,
     Q_OE,
     Q_LSFT,
+    Q_LCTL,
+    Q_LGUI,
+    Q_LALT,
     Q_RSFT,
+    Q_RCTL,
+    Q_RGUI,
+    Q_RALT,
     Q_END,
     // Colemak combos
     C_START,
@@ -56,8 +62,14 @@ const uint16_t PROGMEM qwerty_J[] = {KC_U, KC_M, COMBO_END};
 const uint16_t PROGMEM qwerty_K[] = {KC_I, KC_COMM, COMBO_END};
 const uint16_t PROGMEM qwerty_L[] = {KC_O, KC_DOT, COMBO_END};
 const uint16_t PROGMEM qwerty_OE[] = {KC_P, NO_MINS, COMBO_END};
-const uint16_t PROGMEM qwerty_LSFT[] = {KC_R, KC_T, KC_V, KC_B, COMBO_END};
-const uint16_t PROGMEM qwerty_RSFT[] = {KC_Y, KC_U, KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM qwerty_LSFT[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM qwerty_LCTL[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM qwerty_LGUI[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM qwerty_LALT[] = {KC_V, KC_B, COMBO_END};
+const uint16_t PROGMEM qwerty_RSFT[] = {KC_Y, KC_U, COMBO_END};
+const uint16_t PROGMEM qwerty_RCTL[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM qwerty_RGUI[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM qwerty_RALT[] = {KC_N, KC_M, COMBO_END};
 // colemak
 const uint16_t PROGMEM colemak_A[] = {KC_Q, KC_Z, COMBO_END};
 const uint16_t PROGMEM colemak_R[] = {KC_W, KC_X, COMBO_END};
@@ -83,7 +95,13 @@ combo_t key_combos[] = {
     [Q_L] = COMBO(qwerty_L, KC_L),
     [Q_OE] = COMBO(qwerty_OE, NO_OE),
     [Q_LSFT] = COMBO(qwerty_LSFT, KC_LSFT),
+    [Q_LCTL] = COMBO(qwerty_LCTL, KC_LCTL),
+    [Q_LGUI] = COMBO(qwerty_LGUI, KC_LGUI),
+    [Q_LALT] = COMBO(qwerty_LALT, KC_LALT),
     [Q_RSFT] = COMBO(qwerty_RSFT, KC_RSFT),
+    [Q_RCTL] = COMBO(qwerty_RCTL, KC_RCTL),
+    [Q_RGUI] = COMBO(qwerty_RGUI, KC_RGUI),
+    [Q_RALT] = COMBO(qwerty_RALT, KC_RALT),
     // colemak
     [C_A] = COMBO(colemak_A, KC_A),
     [C_R] = COMBO(colemak_R, KC_R),
