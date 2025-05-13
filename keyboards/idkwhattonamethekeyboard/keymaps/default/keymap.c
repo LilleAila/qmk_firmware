@@ -48,6 +48,14 @@ enum combos {
     C_E,
     C_I,
     C_O,
+    C_LSFT,
+    C_LCTL,
+    C_LGUI,
+    C_LALT,
+    C_RSFT,
+    C_RCTL,
+    C_RGUI,
+    C_RALT,
     C_END,
 };
 
@@ -81,6 +89,14 @@ const uint16_t PROGMEM colemak_N[] = {KC_L, KC_H, COMBO_END};
 const uint16_t PROGMEM colemak_E[] = {KC_U, KC_COMM, COMBO_END};
 const uint16_t PROGMEM colemak_I[] = {KC_Y, KC_DOT, COMBO_END};
 const uint16_t PROGMEM colemak_O[] = {NO_OE, NO_MINS, COMBO_END};
+const uint16_t PROGMEM colemak_LSFT[] = {KC_P, KC_B, COMBO_END};
+const uint16_t PROGMEM colemak_LCTL[] = {KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM colemak_LGUI[] = {KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM colemak_LALT[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM colemak_RSFT[] = {KC_J, KC_L, COMBO_END};
+const uint16_t PROGMEM colemak_RCTL[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM colemak_RGUI[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM colemak_RALT[] = {KC_K, KC_H, COMBO_END};
 
 combo_t key_combos[] = {
     // qwerty
@@ -113,6 +129,14 @@ combo_t key_combos[] = {
     [C_E] = COMBO(colemak_E, KC_E),
     [C_I] = COMBO(colemak_I, KC_I),
     [C_O] = COMBO(colemak_O, KC_O),
+    [C_LSFT] = COMBO(colemak_LSFT, KC_LSFT),
+    [C_LCTL] = COMBO(colemak_LCTL, KC_LCTL),
+    [C_LGUI] = COMBO(colemak_LGUI, KC_LGUI),
+    [C_LALT] = COMBO(colemak_LALT, KC_LALT),
+    [C_RSFT] = COMBO(colemak_RSFT, KC_RSFT),
+    [C_RCTL] = COMBO(colemak_RCTL, KC_RCTL),
+    [C_RGUI] = COMBO(colemak_RGUI, KC_RGUI),
+    [C_RALT] = COMBO(colemak_RALT, KC_RALT),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
